@@ -4,6 +4,7 @@ package nom.youcanwell.order.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nom.youcanwell.order.dto.OrderDto;
+import nom.youcanwell.order.entity.Order;
 import nom.youcanwell.order.mapper.OrderMapper;
 import nom.youcanwell.order.service.OrderService;
 import org.springframework.http.HttpStatus;
@@ -24,11 +25,13 @@ public class OrderController {
 
     //결제 준비
     @GetMapping("/ready")
-    public @ResponseBody ResponseEntity startContract() throws IOException {
-        OrderDto.OrderReadyResponse redyForPay = orderService.startKakaoPay();
-        this.tid = redyForPay.getTid();
-        log.info("결제 고유 번호 = {}", redyForPay.getTid());
-        return new ResponseEntity(redyForPay, HttpStatus.ACCEPTED);
+    public @ResponseBody ResponseEntity startContract(@RequestBody OrderDto.OrderPostinfo postinfo) throws IOException {
+        log.info("주문정보 ={}", postinfo.getItemName()); log.info("결재 총액 ={}", postinfo.getPrice());
+        Order order = orderMapper.postInfoToOrder(postinfo);
+        OrderDto.OrderReadyResponse readyForPay = orderService.startKakaoPay(order);
+        orderService.saveTid(order,readyForPay.getTid());
+        this.tid = readyForPay.getTid();
+        return new ResponseEntity(readyForPay, HttpStatus.ACCEPTED);
     }
     //결제 승인
     @GetMapping("/success")

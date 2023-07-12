@@ -57,9 +57,10 @@ public class OrderDto {
     @Getter
     @Setter
     public static class OrderPostinfo{
-        private String memberId;
         private String ItemName;
         private int quantity;
+        private double price;
+        private int orderTax;
 
     }
 }

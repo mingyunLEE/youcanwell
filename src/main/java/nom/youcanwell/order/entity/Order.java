@@ -1,7 +1,6 @@
 package nom.youcanwell.order.entity;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -12,6 +11,9 @@ import java.util.List;
 @Getter
 @Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
 @Table(name = "ORDER_TABLE")
 public class Order {
     @Id
@@ -20,17 +22,13 @@ public class Order {
     @Column(nullable = false)
     private String itemName;
     @Column(nullable = false)
-    private double totalAmount;
+    private double price;
     @Column(nullable = false)
     private int quantity;
     @Column(nullable = false)
     private int orderTax;
+    @Column(unique = true)
+    private String tid;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
-    private List<OrderLog> orderLogList = new ArrayList<>();
-
-    public Order() {
-
-    }
 
 }
