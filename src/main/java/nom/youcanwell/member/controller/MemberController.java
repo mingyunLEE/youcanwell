@@ -4,12 +4,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nom.youcanwell.dto.MultiResponseDto;
 import nom.youcanwell.dto.SingleResponseDto;
+import nom.youcanwell.member.dto.MemberDto;
 import nom.youcanwell.member.entity.Member;
 import nom.youcanwell.member.mapper.MemberMapper;
 import nom.youcanwell.member.service.MemberService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Positive;
@@ -19,6 +21,7 @@ import java.util.List;
 @RequestMapping("/member")
 @Slf4j
 @RequiredArgsConstructor
+@Validated
 public class MemberController {
     private final MemberService memberService;
 
@@ -61,9 +64,10 @@ public class MemberController {
                 new MultiResponseDto<>(mapper.memberListResponses(allMembers),pageInformation),HttpStatus.OK);
     }
 
-    @PatchMapping("/{memberName}")
-    public ResponseEntity patchMember(@PathVariable("memberName") String memberName) {
-        Member member = memberService.updateMemberInfo(memberName);
+    @PatchMapping("/{memberId}")
+    public ResponseEntity patchMember(@PathVariable("memberId") Long memberId,
+                                      @Validated @RequestBody MemberDto.Patch patchData) {
+        Member member = memberService.updateMemberInfo(memberId,mapper.memberPatchToMember(patchData));
 
         return new ResponseEntity(
                 new SingleResponseDto<>(mapper.memberToDetailResponse(member)),HttpStatus.OK);
