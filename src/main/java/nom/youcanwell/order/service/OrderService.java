@@ -74,19 +74,16 @@ public class OrderService {
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(parameters, this.getHeaders());
         RestTemplate restTemplate = new RestTemplate();
         OrderDto.ApproveResponse approveResponse = restTemplate.postForObject(approveUrl, requestEntity, OrderDto.ApproveResponse.class);
-
         return approveResponse;
-
-
     }
 
     private HttpHeaders getHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", authorization);
         headers.set("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-
         return headers;
     }
+
     public void saveTid(Order order, String tid) {
         Order verifyOrderId = verifyOrderId(order);
         verifyOrderId.setTid(tid);
