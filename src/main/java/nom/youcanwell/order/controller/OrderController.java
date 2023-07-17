@@ -7,6 +7,7 @@ import nom.youcanwell.order.dto.OrderDto;
 import nom.youcanwell.order.entity.Order;
 import nom.youcanwell.order.mapper.OrderMapper;
 import nom.youcanwell.order.service.OrderService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +54,14 @@ public class OrderController {
     @GetMapping("/fail")
     public String payFail() {
         return "redirect:/";
+    }
+
+    //결제한 내역 리스트 조회
+    @GetMapping("/{userId}")
+    public ResponseEntity getOrderlistByUserId(@PathVariable("userId") Long userId) {
+        Page<Order> orderList = orderService.getOrderList(userId);
+
+        return new ResponseEntity(orderList, HttpStatus.OK); //수정필요
     }
 
 

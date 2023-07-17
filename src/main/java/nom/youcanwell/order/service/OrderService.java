@@ -5,6 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import nom.youcanwell.order.dto.OrderDto;
 import nom.youcanwell.order.entity.Order;
 import nom.youcanwell.order.repository.OrderRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
@@ -92,6 +95,12 @@ public class OrderService {
 
     private Order verifyOrderId(Order order) {
         return orderRepository.findById(order.getOrderId()).orElseThrow(() -> new RuntimeException());
+    }
+
+    public Page<Order> getOrderList(Long userId) {
+
+
+        return orderRepository.findAll(PageRequest.of(0, 10, Sort.by("orderId")));
     }
 
 }

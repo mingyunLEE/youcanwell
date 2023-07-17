@@ -1,4 +1,4 @@
-package nom.youcanwell.course.controller.service;
+package nom.youcanwell.course.service;
 
 import nom.youcanwell.course.entity.Course;
 import nom.youcanwell.course.repository.CourseRepository;
