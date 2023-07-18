@@ -8,11 +8,14 @@ public enum ExceptionCode {
 
     USER_NAME_ALREADY_EXISTS(400, "This memberName already exists"),
     USER_EXISTS(409, "User exists"),
-    CHALLENGE_NOT_FOUND(404, "Course not found"),
+    COURSE_NOT_FOUND(404, "Course not found"),
     COMMENT_NOT_FOUND(404, "Comment not found");
 
     @Getter
     private int code;
+
+    @Getter
+    private int status;
 
     @Getter
     private String message;
