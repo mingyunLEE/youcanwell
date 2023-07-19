@@ -1,11 +1,11 @@
-package nom.youcanwell.course.member.service;
+package nom.youcanwell.member.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import nom.youcanwell.course.member.repository.MemberRepository;
+import nom.youcanwell.member.repository.MemberRepository;
 import nom.youcanwell.exception.BusinessLogicException;
 import nom.youcanwell.exception.ExceptionCode;
-import nom.youcanwell.course.member.entity.Member;
+import nom.youcanwell.member.entity.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
