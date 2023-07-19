@@ -33,7 +33,6 @@ jwt:
   refresh-token:
     expire-length: 120960000
 
-#??? ???? ?????
 mail:
   address:
-    admin: mins402kim@kakao.com
+    admin: leemingyun@hotmail.co.kr
