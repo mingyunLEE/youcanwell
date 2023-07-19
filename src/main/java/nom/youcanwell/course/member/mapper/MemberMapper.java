@@ -1,7 +1,7 @@
-package nom.youcanwell.member.mapper;
+package nom.youcanwell.course.member.mapper;
 
-import nom.youcanwell.member.dto.MemberDto;
-import nom.youcanwell.member.entity.Member;
+import nom.youcanwell.course.member.dto.MemberDto;
+import nom.youcanwell.course.member.entity.Member;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OauthController {
     private final OauthService oauthservice;
     @GetMapping("/oauth/{provider}")
-    public ResponseEntity login(@PathVariable String provider, @RequestParam String code) throws JsonProcessingException {
+    public ResponseEntity Oauth2login(@PathVariable String provider, @RequestParam String code) throws JsonProcessingException {
         LoginDto loginDto = oauthservice.login(provider, code);
 
         return new ResponseEntity<>(loginDto, HttpStatus.ACCEPTED);

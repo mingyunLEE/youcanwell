@@ -2,8 +2,8 @@ package nom.youcanwell.security.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import nom.youcanwell.member.entity.Member;
-import nom.youcanwell.member.repository.MemberRepository;
+import nom.youcanwell.course.member.entity.Member;
+import nom.youcanwell.course.member.repository.MemberRepository;
 import nom.youcanwell.security.JwtTokenizer;
 import nom.youcanwell.security.dto.AccessTokenDto;
 import nom.youcanwell.security.dto.LoginDto;

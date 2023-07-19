@@ -1,4 +1,4 @@
-package nom.youcanwell.member.entity;
+package nom.youcanwell.course.member.entity;
 
 import lombok.*;
 import nom.youcanwell.audit.TimeAudit;

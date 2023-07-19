@@ -1,13 +1,13 @@
-package nom.youcanwell.member.controller;
+package nom.youcanwell.course.member.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import nom.youcanwell.course.member.dto.MemberDto;
+import nom.youcanwell.course.member.mapper.MemberMapper;
+import nom.youcanwell.course.member.service.MemberService;
 import nom.youcanwell.dto.MultiResponseDto;
 import nom.youcanwell.dto.SingleResponseDto;
-import nom.youcanwell.member.dto.MemberDto;
-import nom.youcanwell.member.entity.Member;
-import nom.youcanwell.member.mapper.MemberMapper;
-import nom.youcanwell.member.service.MemberService;
+import nom.youcanwell.course.member.entity.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

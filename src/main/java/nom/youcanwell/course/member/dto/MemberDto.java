@@ -1,4 +1,4 @@
-package nom.youcanwell.member.dto;
+package nom.youcanwell.course.member.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

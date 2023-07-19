@@ -1,6 +1,6 @@
-package nom.youcanwell.member.repository;
+package nom.youcanwell.course.member.repository;
 
-import nom.youcanwell.member.entity.Member;
+import nom.youcanwell.course.member.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -2,6 +2,8 @@ package nom.youcanwell.order.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import nom.youcanwell.exception.BusinessLogicException;
+import nom.youcanwell.exception.ExceptionCode;
 import nom.youcanwell.order.dto.OrderDto;
 import nom.youcanwell.order.entity.Order;
 import nom.youcanwell.order.repository.OrderRepository;
@@ -61,7 +63,7 @@ public class OrderService {
     }
 
     public OrderDto.ApproveResponse approveKakaoPay(String pgtoken, String tid) {
-        Order order = orderRepository.findByTid(tid).orElseThrow(()-> new RuntimeException());
+        Order order = orderRepository.findByTid(tid).orElseThrow(()-> new BusinessLogicException(ExceptionCode.TRADE_CODE_WRONG));
 
         //카카오톡에서 요청하는 기본 양식
         MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
