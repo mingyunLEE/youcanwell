@@ -1,15 +1,17 @@
 package nom.youcanwell.member.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import nom.youcanwell.audit.TimeAudit;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -19,7 +21,7 @@ public class Member extends TimeAudit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    @Column(nullable = false)
+    @Column
     private String memberDescription;
 
     @Column(nullable = false,unique = true)
@@ -28,10 +30,19 @@ public class Member extends TimeAudit {
     @Column(nullable = false,unique = true)
     private String memberName;
 
-    @Column(nullable = false)
+    @Column
     private double memberMoney=0;
 
     @Column(nullable = false)
     private String memberImage = "image";
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Column
+    private List<String> roles = new ArrayList<>();
+
+    @Column
+    private String provider;
+    @Column
+    private String providerId;
 
 }
