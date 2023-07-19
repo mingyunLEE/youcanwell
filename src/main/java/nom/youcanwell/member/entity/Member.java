@@ -24,6 +24,20 @@ public class Member extends TimeAudit {
     @Column
     private String memberDescription;
 
+    @Builder
+    public Member(String memberEmail, String memberImage, List<String> roles, String provider, String providerId) {
+
+        this.roles = roles;
+        this.provider = provider;
+        this.providerId = providerId;
+        this.memberEmail = memberEmail;
+        this.memberImage = memberImage;
+
+        this.memberName = "임의값";
+        this.memberMoney = 0;
+        this.memberDescription = "";
+    }
+
     @Column(nullable = false,unique = true)
     private String memberEmail;
 
@@ -36,8 +50,9 @@ public class Member extends TimeAudit {
     @Column(nullable = false)
     private String memberImage = "image";
 
-    @ElementCollection(fetch = FetchType.EAGER)
+
     @Column
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
 
     @Column
